@@ -19,9 +19,16 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  return [value].length;
 }
+
+getStringLength('aaaaa');
+getStringLength('b');
+getStringLength('');
+getStringLength();
+getStringLength(null);
+getStringLength(undefined);
 
 /**
  * Returns true if the value is a string, otherwise returns false.
@@ -53,9 +60,12 @@ function isString(/* value */) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  return value1 + value2;
 }
+concatenateStrings('aa', 'bb');
+concatenateStrings('aa', '');
+concatenateStrings('', 'bb');
 
 /**
  * Returns the first character of the given string.
@@ -68,9 +78,13 @@ function concatenateStrings(/* value1, value2 */) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  return value.charAt(0);
 }
+
+getFirstChar('John Doe');
+getFirstChar('cat');
+getFirstChar('');
 
 /**
  * Removes leading and trailing whitespace characters from the string.
