@@ -97,9 +97,12 @@ getFirstChar('');
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
 }
+removeLeadingAndTrailingWhitespaces('  Abracadabra');
+removeLeadingAndTrailingWhitespaces('cat ');
+removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ');
 
 /**
  * Removes only leading whitespace characters from the string.
@@ -112,9 +115,12 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(value) {
+  return value.trimStart();
 }
+removeLeadingWhitespaces('  Abracadabra');
+removeLeadingWhitespaces('cat ');
+removeLeadingWhitespaces('\t\t\tHello, World! ');
 
 /**
  * Removes only trailing whitespace characters from the string.
@@ -127,9 +133,12 @@ function removeLeadingWhitespaces(/* value */) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(value) {
+  return value.trimEnd();
 }
+removeTrailingWhitespaces('  Abracadabra');
+removeTrailingWhitespaces('cat ');
+removeTrailingWhitespaces('\t\t\tHello, World! ');
 
 /**
  * Returns a string that is repeated the specified number of times.
@@ -144,9 +153,12 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  return str.repeat(times) || '';
 }
+repeatString('A', 5);
+repeatString('cat', 3);
+repeatString('', 3);
 
 /**
  * Remove the first occurrence of a substring from a string.
@@ -160,9 +172,16 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const index = str.indexOf(value);
+  if (index === -1) {
+    return str;
+  }
+  return str.slice(0, index) + str.slice(index + value.length);
 }
+removeFirstOccurrences('To be or not to be', 'be');
+removeFirstOccurrences('I like legends', 'end');
+removeFirstOccurrences('ABABAB', 'BA');
 
 /**
  * Remove the last occurrence of a substring from a string.
@@ -207,9 +226,11 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
+startsWith('Hello World', 'World');
+startsWith('Hello World', 'Hello');
 
 /**
  * Checks if a string ends with a specific substring.
@@ -222,9 +243,11 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
+endsWith('Hello World', 'World');
+endsWith('Hello World', 'Hello');
 
 /**
  * Returns a time string in the "mm:ss" format.
@@ -253,9 +276,11 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
+reverseString('abcdef');
+reverseString('12345');
 
 /**
  * Returns a string with characters in alphabetical order.
@@ -268,9 +293,12 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  return str.split('').sort().join('');
 }
+orderAlphabetically('webmaster');
+orderAlphabetically('textbook');
+orderAlphabetically('abc123xyz');
 
 /**
  * Checks if a given string contains a specified substring.
@@ -284,9 +312,12 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
+containsSubstring('Hello, World!', 'World');
+containsSubstring('JavaScript is Fun', 'Python');
+containsSubstring('12345', '34');
 
 /**
  * Returns the number of vowels in the string.
@@ -302,9 +333,15 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  return str.match(['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'])
+    .length;
 }
+countVowels('apple');
+countVowels('banana');
+countVowels('cherry');
+countVowels('aEiOu');
+countVowels('XYZ');
 
 /**
  * Returns true if the string is a palindrome; otherwise false.
