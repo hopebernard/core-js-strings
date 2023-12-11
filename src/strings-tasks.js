@@ -333,15 +333,9 @@ containsSubstring('12345', '34');
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(str) {
-  return str.match(['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'])
-    .length;
+function countVowels(/* str */) {
+  throw new Error('Not implemented');
 }
-countVowels('apple');
-countVowels('banana');
-countVowels('cherry');
-countVowels('aEiOu');
-countVowels('XYZ');
 
 /**
  * Returns true if the string is a palindrome; otherwise false.
