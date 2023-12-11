@@ -388,9 +388,15 @@ isPalindrome('No lemon, no melon');
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const longestWord = sentence.split(' ').sort(function aB(a, b) {
+    return b.length - a.length;
+  });
+  return longestWord[0];
 }
+findLongestWord('The quick brown fox');
+findLongestWord('A long and winding road');
+findLongestWord('No words here');
 
 /**
  * Returns the string where each word is reversed.
@@ -402,9 +408,16 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  const words = str.split(' ');
+  const result = [];
+  for (let i = 0; i < words.length; i += 1) {
+    result.push(words[i].split('').reverse().join(''));
+  }
+  return result.join(' ');
 }
+reverseWords('Hello World');
+reverseWords('The Quick Brown Fox');
 
 /**
  * Inverts the case of each character in the given string.
@@ -417,9 +430,24 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  let s = '';
+  let i = 0;
+  while (i < str.length) {
+    let n = str.charAt(i);
+    if (n === n.toUpperCase()) {
+      n = n.toLowerCase;
+    } else {
+      n = n.toUpperCase;
+    }
+    i += 1;
+    s += n;
+  }
+  return s;
 }
+invertCase('Hello, World!');
+invertCase('JavaScript is Fun');
+invertCase('12345');
 
 /**
  * Returns the result of string template and given parameters firstName and lastName.
@@ -434,9 +462,11 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
+getStringFromTemplate('John', 'Doe');
+getStringFromTemplate('Chuck', 'Norris');
 
 /**
  * Extracts a name from template string 'Hello, First_Name Last_Name!'.
@@ -463,9 +493,12 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.slice(1, -1);
 }
+unbracketTag('<div>');
+unbracketTag('<span>');
+unbracketTag('<a>');
 
 /**
  * Extracts e-mails from single string with e-mails list delimited by semicolons
@@ -482,9 +515,13 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
 }
+extractEmails(
+  'angus.young@gmail.com;brian.johnson@hotmail.com;bon.scott@yahoo.com'
+);
+extractEmails('info@gmail.com');
 
 /**
  * Encode specified string with ROT13 cipher
@@ -502,9 +539,18 @@ function extractEmails(/* str */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const originalAlpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const cipher = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+  return str.replace(
+    /[a-z]/gi,
+    (letter) => cipher[originalAlpha.indexOf(letter)]
+  );
 }
+encodeToRot13('hello');
+encodeToRot13('Why did the chicken cross the road?');
+encodeToRot13('Gb trg gb gur bgure fvqr!');
+encodeToRot13('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz');
 
 /**
  * Returns playid card id.
