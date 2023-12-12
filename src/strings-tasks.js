@@ -44,9 +44,15 @@ getStringLength(undefined);
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string';
 }
+isString();
+isString(null);
+isString([]);
+isString({});
+isString('test');
+isString('new String(test)');
 
 /**
  * Returns the result of concatenation of two strings.
@@ -262,9 +268,13 @@ endsWith('Hello World', 'Hello');
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  return minutes + seconds;
 }
+formatTime(5, 30);
+formatTime(1, 15);
+formatTime(0, 45);
+formatTime(0, 0);
 
 /**
  * Returns a string in reverse order.
